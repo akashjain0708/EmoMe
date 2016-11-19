@@ -122,15 +122,16 @@ function startRecording(stream) {
 }
 
 function redirectToCharts() {
-    sendVideoURL = function (videoURL) {
+
 		$.ajax({
 			type: "GET",
-			url: "/submitData",
-			data: videoURL,
+			url: "/getCharts",
+			data: {'videoURL' : globalVideoURL},
 			success: function (data) {
+				console.log("redirecting to charts")
 			}
 		})
-	};
+
 }
 
 //function handleSourceOpen(event) {
@@ -157,7 +158,8 @@ function onBtnStopClicked(){
 	recBtn.disabled = false;
 	pauseResBtn.disabled = true;
 	stopBtn.disabled = true;
-
+	console.log("toggling visibility");
+	$('.charButton').css('visibility', 'visible');
 }
 
 function onPauseResumeClicked(){
