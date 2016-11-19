@@ -1,5 +1,6 @@
 import imageio
 from videoProcessing import VideoProcessing
+from clarifai_api import *
 
 class VideoController(object):
 	def __init__(self):
@@ -7,10 +8,15 @@ class VideoController(object):
 		self.vidProcess = VideoProcessing()
 
 	def readVideo(self, filename):
-		readVideo = imageio.get_reader("assets/" + asfilename)
+		readVideo = imageio.get_reader("../clarifai_cont/frame_images/" + filename)
 		processedVid = self.vidProcess.processVid(readVideo)
 		
 		return processedVid
 
+	def getProbabilities(self):
+		frame_image_path_list = self.readVideo("tester.mp4")
+		getProbabilityData(frame_image_path_list)
+
 	
-v = VideoController()
+video_obj = VideoController()
+video_obj.getProbabilities()

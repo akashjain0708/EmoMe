@@ -10,8 +10,8 @@ class VideoProcessing(object):
 		stripFileNames = []
 		count = 1
 		for i, im in enumerate(readVideo):
-			if i % fps == 0:
-				imageio.imwrite("assets/splitImages/temp" + str(count) + ".jpg", im)
+			if i % int(fps) == 0:
+				imageio.imwrite("./../clarifai_cont/frame_images/temp" + str(count) + ".jpg", im)
 				stripFileNames.append("temp" + str(count) + ".jpg")
 				count += 1
 
