@@ -23,5 +23,5 @@ def post_chart_data():
 @app.route('/getChart', methods=['GET'])
 def display_chart():
     video_obj = VideoController()
-    data_set = video_obj.getProbabilityData('user_video.webm')
-    return render_template('chart.html', values=values, labels=labels)
+    data_set = video_obj.getDataFromVideo('user_video.webm')
+    return render_template('chart.html', dataset = data_set)

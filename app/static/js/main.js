@@ -36,6 +36,7 @@ var sourceBuffer;
 var mediaRecorder;
 var chunks = [];
 var count = 0;
+var globalVideoURL = "";
 
 function startRecording(stream) {
 	log('Start recording...');
@@ -102,6 +103,9 @@ function startRecording(stream) {
 
 		downloadLink.setAttribute( "download", name);
 		downloadLink.setAttribute( "name", name);
+
+		globalVideoURL = videoURL;
+
 	};
 
 	mediaRecorder.onpause = function(){
@@ -114,6 +118,18 @@ function startRecording(stream) {
 
 	mediaRecorder.onwarning = function(e){
 		log('Warning: ' + e);
+	};
+}
+
+function redirectToCharts() {
+    sendVideoURL = function (videoURL) {
+		$.ajax({
+			type: "GET",
+			url: "/submitData",
+			data: videoURL,
+			success: function (data) {
+			}
+		})
 	};
 }
 
@@ -141,6 +157,7 @@ function onBtnStopClicked(){
 	recBtn.disabled = false;
 	pauseResBtn.disabled = true;
 	stopBtn.disabled = true;
+
 }
 
 function onPauseResumeClicked(){
@@ -158,7 +175,6 @@ function onPauseResumeClicked(){
 	recBtn.disabled = true;
 	pauseResBtn.disabled = false;
 }
-
 
 function log(message){
 	dataElement.innerHTML = dataElement.innerHTML+'<br>'+message ;
