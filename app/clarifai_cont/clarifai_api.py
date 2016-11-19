@@ -4,6 +4,8 @@ app = ClarifaiApp()
 
 model = app.models.get('Emotion')
 
-# image = ClImage(filename='/assets/tester.jpg')
+image = ClImage(filename='./../static/assets/tester.jpg')
 
-print model.predict_by_url('https://samples.clarifai.com/metro-north.jpg')
+concept_details = model.predict([image])['outputs'][0]['data']['concepts'][0]
+print concept_details['value']
+print concept_details['name']
