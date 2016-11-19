@@ -11,13 +11,26 @@ def getProbabilityData(files=None):
 
 	graph_result = []
 
+	# {1: {'Smile':0.5, 'Sad': 0.9}, 2: }
+	# for index in range(0, len(concept_details)):
+	# 	each_element = []
+	# 	for concept_index in range(0, len(concept_details[index]['data']['concepts'])):
+	# 		name = concept_details[index]['data']['concepts'][concept_index]['name']
+	# 		value = concept_details[index]['data']['concepts'][concept_index]['value']
+	# 		each_element.append({name: value})
+	# 	graph_result.append({index: each_element})
+
 	for index in range(0, len(concept_details)):
-		each_element = []
+		each_element = {}
 		for concept_index in range(0, len(concept_details[index]['data']['concepts'])):
 			name = concept_details[index]['data']['concepts'][concept_index]['name']
 			value = concept_details[index]['data']['concepts'][concept_index]['value']
-			each_element.append({name: value})
+			each_element[name] = value
+
+		graph_result[index] = each_element
 		graph_result.append({index: each_element})
+
+
 
 	print graph_result
 	return graph_result
