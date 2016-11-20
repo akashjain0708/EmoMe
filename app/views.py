@@ -1,7 +1,8 @@
-from app import app
+from app.clarifai_cont.videoController import VideoController
 from flask import render_template, request
-import urllib, urllib2
-from clarifai_cont.videoController import VideoController
+
+from app import app
+
 
 @app.route('/')
 @app.route('/index')

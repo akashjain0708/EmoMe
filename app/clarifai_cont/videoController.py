@@ -1,7 +1,7 @@
 import imageio
-from videoProcessing import VideoProcessing
-from clarifai_api import getProbabilityData
-from convertVideo import ConvertVideo
+from app.clarifai_cont.videoProcessing import VideoProcessing
+from app.clarifai_cont.clarifai_api import getProbabilityData
+from app.clarifai_cont.convertVideo import ConvertVideo
 
 class VideoController(object):
     def __init__(self):
