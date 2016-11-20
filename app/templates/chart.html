@@ -1,5 +1,20 @@
-<!DOCTYPE html><html lang="en"><head>   <meta charset="utf-8" />   <title>Chart.js </title>      <!-- import plugin script -->   <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js'></script>   </head><body>
-<h1>Flask Chart.js</h1><!-- bar chart canvas element -->
-<canvas id="chart" width="600" height="400"></canvas>
-<script src="./../static/js/chart.js" type="application/javascript"></script>
-</body></html>
+<!DOCTYPE html><html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Chart.js </title>
+    <!-- import plugin script -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js'></script>
+</head>
+<body>
+    <div val="{{dataset}}" id="dataSetDiv"></div>
+    <canvas id="chart" width="600" height="400"></canvas>
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="./../static/js/chart.js" type="application/javascript"></script>
+    <script>
+        $(document).ready(function(){
+           var dataset = $('#dataSetDiv').attr('val');
+            console.log(dataset);
+        });
+    </script>
+</body>
+</html>
