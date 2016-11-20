@@ -16,7 +16,7 @@ var createChart = function (xLabels, yPoints, yPoints_2, yPoints_3, chartID, bor
             datasets: [{
                 data: yPoints,
                 fill: false,
-                borderColor: borderColor,
+                borderColor: "#d30845",
                 pointBackgroundColor: pointColor,
                 pointBorderWidth: 1,
                 pointHoverRadius: 5,
@@ -29,7 +29,7 @@ var createChart = function (xLabels, yPoints, yPoints_2, yPoints_3, chartID, bor
             }, {
                 data: yPoints_2,
                 fill: false,
-                borderColor: borderColor,
+                borderColor: "#33701a",
                 pointBackgroundColor: pointColor,
                 pointBorderWidth: 1,
                 pointHoverRadius: 5,
@@ -42,7 +42,7 @@ var createChart = function (xLabels, yPoints, yPoints_2, yPoints_3, chartID, bor
             }, {
                 data: yPoints_3,
                 fill: false,
-                borderColor: borderColor,
+                borderColor: "#ff442b",
                 pointBackgroundColor: pointColor,
                 pointBorderWidth: 1,
                 pointHoverRadius: 5,
