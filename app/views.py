@@ -43,6 +43,8 @@ def getMeanValues(smileValues, sadValues, angerValues, fearValues, surpriseValue
 	fearMean = np.mean(fearValues)
 	surpriseMean = np.mean(surpriseValues)
 
+	meanOfMeans = (smileMean + sadMean + angerMean + fearMean + surpriseMean)/5
+
 	print smileValues
 	print smileMean
 	print len(np.where(smileValues >= smileMean)[0])
@@ -53,11 +55,11 @@ def getMeanValues(smileValues, sadValues, angerValues, fearValues, surpriseValue
 	numAboveMeanFear = len(np.where(fearValues > fearMean)[0])
 	numAboveMeanSurprise = len(np.where(surpriseValues > surpriseMean)[0])
 
-	percentageSmile = (float(numAboveMeanSmile)/len(smileValues))*100
-	percentageSad = (float(numAboveMeanSad)/len(sadValues))*100
-	percentageAnger = (float(numAboveMeanAnger)/len(angerValues))*100
-	percentageFear = (float(numAboveMeanFear)/len(fearValues))*100
-	percentageSurprise = (float(numAboveMeanSurprise)/len(surpriseValues))*100
+	percentageSmile = (smileMean*(float(numAboveMeanSmile)/len(smileValues))*100)/meanOfMeans
+	percentageSad = (sadMean*(float(numAboveMeanSad)/len(sadValues))*100)/meanOfMeans
+	percentageAnger = (angerMean*(float(numAboveMeanAnger)/len(angerValues))*100)/meanOfMeans
+	percentageFear = (fearMean*(float(numAboveMeanFear)/len(fearValues))*100)/meanOfMeans
+	percentageSurprise = (surpriseMean*(float(numAboveMeanSurprise)/len(surpriseValues))*100)/meanOfMeans
 
 	return {'Smile': percentageSmile, 'sad': percentageSad, 'Anger': percentageAnger, 'Fear': percentageFear, 'Surprise': percentageSurprise}
 
