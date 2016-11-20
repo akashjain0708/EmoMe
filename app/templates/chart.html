@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
     <link href="{{url_for('static', filename='css/style.css')}}">
     <script>
-      dataSetJson = {{ dataset | tojson}}
+
     </script>
 </head>
 <body>
@@ -15,15 +15,66 @@
     <div val="{{dataset}}" id="dataSetDiv"></div>
 
     <div class="row">
-        <div class="col s12 m6" style="margin-left: 25%">
-          <div class="card large darken-1">
-            <div class="card-content white-text">
-              <span class="card-title" style="color:cadetblue">Happiness Graph</span>
-              <canvas id="chart" width="600" height="400"></canvas>
+        <div class="col s12">
+          <ul class="tabs tabs-fixed-width">
+            <li class="tab col s3"><a class="active" href="#test1">Happy</a></li>
+            <li class="tab col s3"><a href="#test2">Sad</a></li>
+            <li class="tab col s3"><a href="#test3">Combined</a></li>
+            <li class="tab col s3"><a href="#test4">Bubbles</a></li>
+          </ul>
+        </div>
+        <br/><br/>
+        <div id="test1" class="col s12">
+          <div class="row">
+            <div class="col s12 m6" style="margin-left: 25%">
+              <div class="card large darken-1">
+                <div class="card-content white-text">
+                  <span class="card-title" style="color:cadetblue">Happiness Graph</span>
+                  <canvas id="chart" width="600" height="400"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="test2" class="col s12">
+            <div class="row">
+            <div class="col s12 m6" style="margin-left: 25%">
+              <div class="card large darken-1">
+                <div class="card-content white-text">
+                  <span class="card-title" style="color:cadetblue">Happiness Graph</span>
+                  <canvas id="chart" width="600" height="400"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="test3" class="col s12">
+            <div class="row">
+            <div class="col s12 m6" style="margin-left: 25%">
+              <div class="card large darken-1">
+                <div class="card-content white-text">
+                  <span class="card-title" style="color:cadetblue">Happiness Graph</span>
+                  <canvas id="chart" width="600" height="400"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="test4" class="col s12">
+            <div class="row">
+            <div class="col s12 m6" style="margin-left: 25%">
+              <div class="card large darken-1">
+                <div class="card-content white-text">
+                  <span class="card-title" style="color:cadetblue">Happiness Graph</span>
+                  <canvas id="chart" width="600" height="400"></canvas>
+                </div>
+              </div>
             </div>
           </div>
         </div>
     </div>
+
+
 
     {% include 'footer.html' %}
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
