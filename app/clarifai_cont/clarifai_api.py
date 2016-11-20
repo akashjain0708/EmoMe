@@ -8,9 +8,9 @@ def getProbabilityData(files=None):
 		files[index] = ClImage(filename='./app/clarifai_cont/frame_images/'+file_path);
 
 
-	# temp = 
-	# print model.predict(files)
-	concept_details = model.predict(files)['outputs']
+	temp = model.predict(files)
+	print temp
+	concept_details = temp['outputs']
 
 	graph_result = {}
 

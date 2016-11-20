@@ -64,6 +64,27 @@ def getMeanValues(smileValues, sadValues, angerValues, fearValues, surpriseValue
 	return {'Smile': percentageSmile, 'sad': percentageSad, 'Anger': percentageAnger, 'Fear': percentageFear, 'Surprise': percentageSurprise}
 
 
+def getHighestPerSecond(smileValues, sadValues, angerValues, fearValues, surpriseValues):
+	smileMean = np.mean(smileValues)
+	sadMean = np.mean(sadValues)
+	angerMean = np.mean(angerValues)
+	fearMean = np.mean(fearValues)
+	surpriseMean = np.mean(surpriseValues)
+
+	smileStd = np.std(smileValues)
+	sadStd = np.std(sadValues)
+	angerStd = np.std(angerValues)
+	fearStd = np.std(fearValues)
+	surpriseStd = np.std(surpriseValues)
+	
+
+	newSmileList = [(value - smileMean)/smileStd for value in smileValues]
+	newSadList = [(value - sadMean)/sadStd for value in sadValues]
+	newAngerList = [(value - angerMean)/angerStd for value in angerValues]
+	newFearList = [(value - fearMean)/fearStd for value in fearValues]
+	newSurpriseList = [(value - surpriseMean)/surpriseStd for value in surpriseValues]
+
+	return {'Smile': newSmileList, 'sad': newSadList, 'Anger': newAngerList, 'Fear': newFearList, 'Surprise': newSurpriseList}
 
 
 @app.route('/getCharts', methods=['GET'])
@@ -72,10 +93,11 @@ def get_charts():
 	data_set = video_obj.getDataFromVideo()
 	values = getValues(data_set)
 	listOfPercentages = getMeanValues(values['Smile'], values['sad'], values['Anger'], values['Fear'], values['Surprise'])
-
+	highestPerSecond = getHighestPerSecond(values['Smile'], values['sad'], values['Anger'], values['Fear'], values['Surprise'])
 	print data_set
 	print listOfPercentages
-	return render_template('chart.html', dataset = data_set, percentages = listOfPercentages)
+	print highestPerSecond
+	return render_template('chart.html', dataset = data_set, percentages = listOfPercentages, highestPerSecond = highestPerSecond)
 
 
 

@@ -2,7 +2,7 @@
  * Created by Akash on 11/19/2016.
  */
 
-var createChart = function (xLabels, yPoints, yPoints_2, yPoints_3, chartID, borderColor, pointColor, hoverBackColor, hoverBorderColor, label, xLabelString, yLabelString) {
+var createChart = function (xLabels, yPoints, yPoints_2, yPoints_3, yPoints_4, yPoints_5, chartID, borderColor, pointColor, hoverBackColor, hoverBorderColor, label, xLabelString, yLabelString) {
 
     console.log(xLabels);
     console.log(yPoints);
@@ -52,7 +52,35 @@ var createChart = function (xLabels, yPoints, yPoints_2, yPoints_3, chartID, bor
                 pointRadius: 1,
                 pointHitRadius: 10,
                 label: "Anger"
-            }]
+            },
+            {
+                data: yPoints_4,
+                fill: false,
+                borderColor: "#0a96b2",
+                pointBackgroundColor: pointColor,
+                pointBorderWidth: 1,
+                pointHoverRadius: 5,
+                pointHoverBackgroundColor: hoverBackColor,
+                pointHoverBorderColor: hoverBorderColor,
+                pointHoverBorderWidth: 2,
+                pointRadius: 1,
+                pointHitRadius: 10,
+                label: "Fear"
+            },
+            {
+                data: yPoints_5,
+                fill: false,
+                borderColor: "#3c187f",
+                pointBackgroundColor: pointColor,
+                pointBorderWidth: 1,
+                pointHoverRadius: 5,
+                pointHoverBackgroundColor: hoverBackColor,
+                pointHoverBorderColor: hoverBorderColor,
+                pointHoverBorderWidth: 2,
+                pointRadius: 1,
+                pointHitRadius: 10,
+                label: "Surprise"
+             }]
         },
         options: {
             scales: {
@@ -178,6 +206,8 @@ var getXYPoints = function(label, dataSet) {
 [x2, y2] = getXYPoints('sad', dataSetJson);
 [x1, y1] = getXYPoints('Smile', dataSetJson);
 [x3, y3] = getXYPoints('Anger', dataSetJson);
+[x4, y4] = getXYPoints('Fear', dataSetJson);
+[x5, y5] = getXYPoints('Surprise', dataSetJson);
 
 // createChart(x2, y2, "sadChart","rgba(75,192,192,1)" ,"#fff", "rgba(75,192,192,1)", "rgba(220,220,220,1)" , 'Smile', 'Time', 'Happiness');
 
@@ -229,7 +259,8 @@ var getXYPoints = function(label, dataSet) {
 
 
 
-createChart(x1, y1, y2, y3, "smileChart","rgba(75,192,192,1)" ,"#fff", "rgba(75,192,192,1)", "rgba(220,220,220,1)" , 'Smile', 'Time', 'Happiness');
+createChart(x1, y1, y2, y3, y4, y5, "smileChart","rgba(75,192,192,1)" ,"#fff", "rgba(75,192,192,1)", "rgba(220,220,220,1)" , 'Smile', 'Time', 'Happiness');
+createChart(x1, highestPerSecond['Smile'], highestPerSecond['sad'], highestPerSecond['Anger'], highestPerSecond['Fear'], highestPerSecond['Surprise'], "highestChart","rgba(75,192,192,1)" ,"#fff", "rgba(75,192,192,1)", "rgba(220,220,220,1)" , 'Smile', 'Time', 'Happiness');
 // createChart(x2, y2, "sadChart","rgba(75,192,192,1)", "#fff", "rgba(75,192,192,1)" , "rgba(220,220,220,1)" , 'Sad', 'Time', 'Sadness');
 
 //var jsonData = {0: {'Smile': 0.50381887}, 1: {'Smile': 0.5244584}, 2: {'Smile': 0.37471813}, 3: {'Smile': 0.3662309}, 4: {'Smile': 0.38467777}, 5: {'Smile': 0.35506552}, 6: {'Smile': 0.35424682}, 7: {'Smile': 0.3941398}, 8: {'Smile': 0.41692236}, 9: {'Smile': 0.38992262}, 10: {'Smile': 0.33604342}, 11: {'Smile': 0.44526315}, 12: {'Smile': 0.38967356}, 13: {'Smile': 0.46438512}, 14: {'Smile': 0.33246452}, 15: {'Smile': 0.34840274}, 16: {'Smile': 0.34378657}, 17: {'Smile': 0.33653626}, 18: {'Smile': 0.48442918}, 19: {'Smile': 0.53641176}, 20: {'Smile': 0.531845}, 21: {'Smile': 0.44345507}, 22: {'Smile': 0.33793026}, 23: {'Smile': 0.33024272}, 24: {'Smile': 0.35893732}, 25: {'Smile': 0.35307083}, 26: {'Smile': 0.35426182}, 27: {'Smile': 0.36865106}, 28: {'Smile': 0.3226741}}
