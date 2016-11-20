@@ -5,7 +5,7 @@ def getProbabilityData(files=None):
 	model = app.models.get('Emotion')
 
 	for index, file_path in enumerate(files):
-		files[index] = ClImage(filename='./frame_images/'+file_path);
+		files[index] = ClImage(filename='./app/clarifai_cont/frame_images/'+file_path);
 
 	concept_details = model.predict(files)['outputs']
 

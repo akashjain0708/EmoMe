@@ -10,12 +10,14 @@ class VideoController(object):
 
     def getDataFromVideo(self, name=None):
         # ConvertVideo("../clarifai_cont/frame_images/" + name)
-        imagePathList = self.readVideo("user_video.mp4")
+        # imagePathList = self.readVideo("user_video.mp4")
+        imagePathList = self.readVideo("testerWebcam8.mp4")
         return self.getProbabilities(imagePathList)
 
     def readVideo(self, filename):
         #Handle conversion first
-        readVideo = imageio.get_reader("./app/clarifai_cont/frame_images/" + filename)
+        # readVideo = imageio.get_reader("./app/clarifai_cont/frame_images/" + filename)
+        readVideo = imageio.get_reader("./app/clarifai_cont/frame_images/testerWebcam8.mp4")
         processedVid = self.vidProcess.processVid(readVideo)
         return processedVid
 

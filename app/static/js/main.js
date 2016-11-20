@@ -196,11 +196,20 @@ function redirectToCharts() {
 	// 	});
 		$.ajax({
 			type: "POST",
-			url: "/getCharts",
+			url: "/saveVideo",
 			contentType: 'application/octet-stream',
 			data: globalVideoURL,
 			processData: false,
 			success: function (data) {
+
+				$.ajax({
+					type: "GET",
+					url: "/getCharts",
+					success: function (data) {
+						location.href = "/getCharts"
+						console.log("redirecting to charts finally!")
+					}
+				});				
 				console.log("redirecting to charts")
 			}
 		});

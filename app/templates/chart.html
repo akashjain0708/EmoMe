@@ -5,6 +5,9 @@
     <!-- import plugin script -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
     <link href="{{url_for('static', filename='css/style.css')}}">
+    <script>
+      dataSetJson = {{ dataset | tojson}}
+    </script>
 </head>
 <body>
     {% include 'header.html' %}
@@ -26,12 +29,6 @@
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js'></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
-    <script src="./../static/js/chart.js" type="application/javascript"></script>
-    <script>
-        $(document).ready(function(){
-           var dataset = $('#dataSetDiv').attr('val');
-            console.log(dataset);
-        });
-    </script>
+    <script src="{{url_for('static', filename='js/chart.js')}}" type="application/javascript"></script>
 </body>
 </html>
