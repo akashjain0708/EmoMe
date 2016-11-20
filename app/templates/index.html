@@ -12,23 +12,13 @@
   <link href="{{url_for('static', filename='css/main.css')}}">
 </head>
 <body>
-  <nav class="light-blue lighten-1" role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">EmoMe</a>
-      <ul class="right hide-on-med-and-down">
-        <li><a href="#">Charts</a></li>
-      </ul>
 
-
-      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
-    </div>
-  </nav>
-
-
+  {% include 'header.html' %}
 
     <div class="section">
 
     </div>
-  </div>
+
 
   <div id="container">
     <div style = "text-align:center;">
@@ -44,30 +34,13 @@
       <p>LOGS</p>
       <p id="data"></p>
     </div>
-    <script src="{{url_for('static', filename='js/main.js')}}"></script>
   </div>
 
-  <footer class="page-footer orange">
-    <div class="container">
-      <div class="row">
-        <div class="col l6 s12">
-          <h5 class="white-text">Company Bio</h5>
-          <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
-        </div>
-      </div>
-    </div>
-    <div class="footer-copyright">
-      <div class="container">
-      Made by <a class="orange-text text-lighten-3" href="#">Abhishek Verma, Akash Jain, Shivu</a>
-      </div>
-    </div>
-
-  </footer>
-
+  {% include 'footer.html' %}
 
   <!--  Scripts-->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+  <script src="{{url_for('static', filename='js/main.js')}}"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
   <script src="{{url_for('static', filename='js/init.js')}}"></script>
 
