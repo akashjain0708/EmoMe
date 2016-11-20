@@ -7,7 +7,7 @@ var createRadarChart = function(cand1,cand2,cand3,cand4,cand5,chartID){
             datasets:[
                 {
                     label: "Candidate 1",
-                    backgroundColor: "rgba(82, 26, 186, 0.2)",
+                    backgroundColor: "rgba(82, 26, 186, 0.8)",
                     borderColor: "rgba(82, 26, 186, 1)",
                     pointBackgroundColor: "rgba(82, 26, 186, 1)",
                     pointBorderColor: "#fff",
@@ -17,7 +17,7 @@ var createRadarChart = function(cand1,cand2,cand3,cand4,cand5,chartID){
                 },
                 {
                     label: "Candidate 2",
-                    backgroundColor: "rgba(160, 155, 170, 0.2)",
+                    backgroundColor: "rgba(160, 155, 170, 0.6)",
                     borderColor: "rgba(160, 155, 170, 1)",
                     pointBackgroundColor: "rgba(160, 155, 170, 1)",
                     pointBorderColor: "#fff",
@@ -27,7 +27,7 @@ var createRadarChart = function(cand1,cand2,cand3,cand4,cand5,chartID){
                 },
                 {
                     label: "Candidate 3",
-                    backgroundColor: "rgba(255, 160, 251, 0.2)",
+                    backgroundColor: "rgba(255, 160, 251, 0.5)",
                     borderColor: "rgba(255, 160, 251, 1)",
                     pointBackgroundColor: "rgba(255, 160, 251, 1)",
                     pointBorderColor: "#fff",
@@ -37,7 +37,7 @@ var createRadarChart = function(cand1,cand2,cand3,cand4,cand5,chartID){
                 },
                 {
                     label: "Candidate 4",
-                    backgroundColor: "rgba(255, 252, 122, 0.2)",
+                    backgroundColor: "rgba(255, 252, 122, 0.4)",
                     borderColor: "rgba(255, 252, 122, 1)",
                     pointBackgroundColor: "rgba(255, 252, 122, 1)",
                     pointBorderColor: "#fff",
