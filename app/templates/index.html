@@ -15,9 +15,7 @@
 
   {% include 'header.html' %}
 
-    <div class="section">
-
-    </div>
+  <div class="bigContainer" style="visibility: visible;">
 
 
   <div id="container">
@@ -36,6 +34,13 @@
     </div>
   </div>
 
+  </div>
+  <a class="waves-effect waves-light btn testButton" ><i class="material-icons left">insert_chart</i>test</a>
+
+  <div class="loaderIcon" style="visibility: hidden">
+    <div class="iconGif"></div>
+  </div>
+
   {% include 'footer.html' %}
 
   <!--  Scripts-->
@@ -43,6 +48,6 @@
   <script src="{{url_for('static', filename='js/main.js')}}"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
   <script src="{{url_for('static', filename='js/init.js')}}"></script>
-
+  <script src="{{url_for('static', filename='js/iconLoader.js')}}"></script>
   </body>
 </html>
