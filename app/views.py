@@ -1,6 +1,7 @@
 from app.clarifai_cont.videoController import VideoController
 from flask import render_template, request, jsonify
 import json
+import numpy as np
 
 from app import app
 
@@ -26,13 +27,53 @@ def save_video():
 	
 	return "Success"
 
+
+def getValues(data_set):
+	returnData = {'Smile': [], 'sad': [], 'Anger': [], 'Fear': [], 'Surprise': []}
+	for entry in data_set:
+		for emotionEntry in data_set[entry]:
+			returnData[emotionEntry].append(data_set[entry][emotionEntry])
+	return returnData
+
+
+def getMeanValues(smileValues, sadValues, angerValues, fearValues, surpriseValues):
+	smileMean = np.mean(smileValues)
+	sadMean = np.mean(sadValues)
+	angerMean = np.mean(angerValues)
+	fearMean = np.mean(fearValues)
+	surpriseMean = np.mean(surpriseValues)
+
+	print smileValues
+	print smileMean
+	print len(np.where(smileValues >= smileMean)[0])
+
+	numAboveMeanSmile = len(np.where(smileValues > smileMean)[0])
+	numAboveMeanSad = len(np.where(sadValues > sadMean)[0])
+	numAboveMeanAnger = len(np.where(angerValues > angerMean)[0])
+	numAboveMeanFear = len(np.where(fearValues > fearMean)[0])
+	numAboveMeanSurprise = len(np.where(surpriseValues > surpriseMean)[0])
+
+	percentageSmile = (float(numAboveMeanSmile)/len(smileValues))*100
+	percentageSad = (float(numAboveMeanSad)/len(sadValues))*100
+	percentageAnger = (float(numAboveMeanAnger)/len(angerValues))*100
+	percentageFear = (float(numAboveMeanFear)/len(fearValues))*100
+	percentageSurprise = (float(numAboveMeanSurprise)/len(surpriseValues))*100
+
+	return {'Smile': percentageSmile, 'sad': percentageSad, 'Anger': percentageAnger, 'Fear': percentageFear, 'Surprise': percentageSurprise}
+
+
+
+
 @app.route('/getCharts', methods=['GET'])
 def get_charts():
 	video_obj = VideoController()
 	data_set = video_obj.getDataFromVideo()
-	print(data_set)
-	print "Hey"
-	return render_template('chart.html', dataset = data_set)
+	values = getValues(data_set)
+	listOfPercentages = getMeanValues(values['Smile'], values['sad'], values['Anger'], values['Fear'], values['Surprise'])
+
+	print data_set
+	print listOfPercentages
+	return render_template('chart.html', dataset = data_set, percentages = listOfPercentages)
 
 
 
