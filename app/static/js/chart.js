@@ -89,7 +89,72 @@ var createPolarChart = function(happyVal, sadVal, angerVal, fearVal, surpriseVal
             animateScale: true,
         }
     });
-}
+};
+
+var createRadarChart = function(cand1,cand2,cand3,cand4,cand5,chartID){
+    var ctx = document.getElementById(chartID);
+    var radarChart = new Chart(ctx, {
+        type: 'radar',
+        data: {
+            labels: ["Happy","Sad","Angry","Surprised","Fear"],
+            datasets:[
+                {
+                    label: "Candidate 1",
+                    backgroundColor: "rgb(82, 26, 186, 0.2)",
+                    borderColor: "rgb(82, 26, 186, 1)",
+                    pointBackgroundColor: "rgb(82, 26, 186, 1)",
+                    pointBorderColor: "#fff",
+                    pointHoverBackgroundColor: "#fff",
+                    pointHoverBorderColor: "rgb(82, 26, 186, 1)",
+                    data: cand1
+                },
+                {
+                    label: "Candidate 2",
+                    backgroundColor: "rgb(160, 155, 170, 0.2)",
+                    borderColor: "rgb(160, 155, 170, 1)",
+                    pointBackgroundColor: "rgb(160, 155, 170, 1)",
+                    pointBorderColor: "#fff",
+                    pointHoverBackgroundColor: "#fff",
+                    pointHoverBorderColor: "rgb(160, 155, 170, 1)",
+                    data: cand2
+                },
+                {
+                    label: "Candidate 3",
+                    backgroundColor: "rgb(255, 160, 251, 0.2)",
+                    borderColor: "rgb(255, 160, 251, 1)",
+                    pointBackgroundColor: "rgb(255, 160, 251, 1)",
+                    pointBorderColor: "#fff",
+                    pointHoverBackgroundColor: "#fff",
+                    pointHoverBorderColor: "rgb(255, 160, 251, 1)",
+                    data: cand3
+                },
+                {
+                    label: "Candidate 4",
+                    backgroundColor: "rgb(255, 252, 122, 0.2)",
+                    borderColor: "rgb(255, 252, 122, 1)",
+                    pointBackgroundColor: "rgb(255, 252, 122, 1)",
+                    pointBorderColor: "#fff",
+                    pointHoverBackgroundColor: "#fff",
+                    pointHoverBorderColor: "rgb(255, 252, 122, 1)",
+                    data: cand4
+                },
+                {
+                    label: "Candidate 5",
+                    backgroundColor: "rgb(137, 242, 121, 0.2)",
+                    borderColor: "rgb(137, 242, 121, 1)",
+                    pointBackgroundColor: "rgb(137, 242, 121, 1)",
+                    pointBorderColor: "#fff",
+                    pointHoverBackgroundColor: "#fff",
+                    pointHoverBorderColor: "rgb(137, 242, 121, 1)",
+                    data: cand5
+                }
+            ]
+        },
+        options:{
+
+        }
+    });
+};
 
 var getXYPoints = function(label, dataSet) {
     xLabels = [];
@@ -171,3 +236,5 @@ createChart(x1, y1, y2, y3, "smileChart","rgba(75,192,192,1)" ,"#fff", "rgba(75,
 //convertDataToChart('Smile', jsonData);
 
 createPolarChart(percentageJson['Smile'],percentageJson['sad'],percentageJson['Anger'],percentageJson['Fear'],percentageJson['Surprise'],'polarChart');
+
+createRadarChart(means['candidate1'],means['candidate2'],means['candidate3'],means['candidate4'],means['candidate5'],'radarChart');
