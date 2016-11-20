@@ -257,3 +257,12 @@ body {
   main {
     flex: 1 0 auto;
   }
+
+.loaderIcon{
+  z-index: 8888;
+  left: 0px;
+  top: 0px;
+  width: 100px;
+  height: 100px;
+  background-color: black;
+}

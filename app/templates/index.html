@@ -15,9 +15,6 @@
 
   {% include 'header.html' %}
 
-  <div class="bigContainer" style="visibility: visible;">
-
-
   <div id="container">
     <div style = "text-align:center;">
         <h3>EmoMe Demo</h3>
@@ -25,8 +22,11 @@
         <a id="rec" onclick="onBtnRecordClicked()" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">play_arrow</i></a>
         <a id="pauseRes"   onclick="onPauseResumeClicked()" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">pause</i></a>
         <a id="stop"  onclick="onBtnStopClicked()"  class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">stop</i></a>
+        <a id="downloadLinkBut"  class="btn-floating btn-large waves-effect waves-light red" download="mediarecorder.webm" name="mediarecorder.webm" href ><i class="material-icons">play_for_work</i></a>
      </div>
-    <a id="downloadLink" download="mediarecorder.webm" name="mediarecorder.webm" href></a>
+
+    <br/>
+
     <div class="container center">
       <a class="waves-effect waves-light btn charButton" style="visibility: hidden;" onClick="redirectToCharts()"><i class="material-icons left">insert_chart</i>Render Charts</a>
       <p>LOGS</p>
@@ -34,11 +34,19 @@
     </div>
   </div>
 
-  </div>
-  <a class="waves-effect waves-light btn testButton" ><i class="material-icons left">insert_chart</i>test</a>
 
-  <div class="loaderIcon" style="visibility: hidden">
-    <div class="iconGif"></div>
+
+
+
+  <div id="loadModal" class="modal white" style="width: 40%; height: 40%;background-color: #eeeeee">
+    <div class="modal-content">
+      <br/>
+      <div class="center row">
+        <img src="{{url_for('static', filename='load.gif')}}" style="background-color: white">
+      </div>
+      <br/>
+      <h5 class="center" style="color: teal">RENDERING YOUR GRAPHS</h5>
+    </div>
   </div>
 
   {% include 'footer.html' %}
@@ -48,6 +56,11 @@
   <script src="{{url_for('static', filename='js/main.js')}}"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
   <script src="{{url_for('static', filename='js/init.js')}}"></script>
-  <script src="{{url_for('static', filename='js/iconLoader.js')}}"></script>
+  <script>
+    $(document).ready(function(){
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+      $('.modal').modal();
+    });
+  </script>
   </body>
 </html>

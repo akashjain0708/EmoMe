@@ -194,6 +194,7 @@ function redirectToCharts() {
 	// 			console.log("redirecting to charts")
 	// 		}
 	// 	});
+	    $('#loadModal').modal('open');
 		$.ajax({
 			type: "POST",
 			url: "/saveVideo",
