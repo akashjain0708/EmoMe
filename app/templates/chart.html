@@ -6,7 +6,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
     <link href="{{url_for('static', filename='css/style.css')}}">
     <script>
-    dataSetJson = {{ dataset | tojson }}
+        dataSetJson = {{ dataset | tojson }}
+        percentageJson = {{ percentages | tojson }}
     </script>
 </head>
 <body>
@@ -39,7 +40,7 @@
             <div class="col s12 m6" style="margin-left: 25%">
               
                   <span class="card-title" style="color:cadetblue">Sadness Graph</span>
-                  <canvas id="sadChart" width="600" height="400"></canvas>
+                  <canvas id="polarChart" width="600" height="400"></canvas>
               
             </div>
           </div>
