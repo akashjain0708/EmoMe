@@ -19,8 +19,8 @@ def chart():
 @app.route('/saveVideo', methods=['POST'])
 def save_video():
 	blob = request.data
-	# imagen = open("./app/clarifai_cont/frame_images/user_video.mp4",'wb')
-	imagen = open("./app/clarifai_cont/frame_images/testerWebcam.mp4",'wb')
+	imagen = open("./app/clarifai_cont/frame_images/user_video.mp4",'wb')
+	# imagen = open("./app/clarifai_cont/frame_images/testerWebcam.mp4",'wb')
 	imagen.write(blob)
 	imagen.close()
 	
