@@ -36,7 +36,7 @@ var sourceBuffer;
 var mediaRecorder;
 var chunks = [];
 var count = 0;
-var globalVideoURL = "";
+var globalVideoURL = [];
 
 function startRecording(stream) {
 	log('Start recording...');
@@ -69,9 +69,14 @@ function startRecording(stream) {
 	mediaRecorder.ondataavailable = function(e) {
 		//log('Data available...');
 		//console.log(e.data);
-		//console.log(e.data.type);
-		//console.log(e);
+		// console.log(e.data.type);
+
+
+		console.log(e);
 		chunks.push(e.data);
+
+
+
 	};
 
 	mediaRecorder.onerror = function(e){
@@ -88,10 +93,63 @@ function startRecording(stream) {
 	mediaRecorder.onstop = function(){
 		log('Stopped  & state = ' + mediaRecorder.state);
 
+		// globalVideoURL = chunks;
+		console.log(chunks);
+		// globalVideoURL = chunks
+
 		var blob = new Blob(chunks, {type: "video/webm"});
+		globalVideoURL = blob;
 		chunks = [];
 
 		var videoURL = window.URL.createObjectURL(blob);
+
+	 //    var formData = new FormData();
+	 //    var fileName = "blob.mp4";
+
+	 //    console.log("data size: ", blob.size);
+
+	 //    var encodeData = new Blob([chunks], { type: 'multipart/form-data' });
+	 //    formData.append("blob", encodeData, fileName);
+	 //    formData.append("blob2", "b", "fileName");
+
+	 //    var request = new XMLHttpRequest();
+	 //    request.open("POST", "/getCharts2", false);
+	 //    request.send(formData);
+
+
+
+
+
+
+
+		// mediaRecorder.save(blob, 'FileName.webm');
+
+		
+		// var fileType = 'video'; // or "audio"
+		// var fileName = 'FileName.webm';  // or "wav" or "ogg"
+
+		// var formData = new FormData();
+		// formData.append(fileType + '-filename', fileName);
+		// formData.append(fileType + '-blob', blob);
+
+		// console.log("BLOOOOOBBBBB")
+		// console.log(blob);
+
+		// xhr('/getCharts2', formData, function (fileURL) {
+		//     window.open(fileURL);
+		// });
+
+		// function xhr(url, data, callback) {
+		//     var request = new XMLHttpRequest();
+		//     request.onreadystatechange = function () {
+		//         if (request.readyState == 4 && request.status == 200) {
+		//             callback(location.href + request.responseText);
+		//         }
+		//     };
+		//     request.open('POST', url);
+		//     request.send(data);
+		// }
+
 
 		downloadLink.href = videoURL;
 		videoElement.src = videoURL;
@@ -101,11 +159,9 @@ function startRecording(stream) {
 		var name  = "interview_vid.webm" ;
 		console.log(name);
 
+		// globalVideoURL = videoURL
 		downloadLink.setAttribute( "download", name);
 		downloadLink.setAttribute( "name", name);
-
-		globalVideoURL = videoURL;
-
 	};
 
 	mediaRecorder.onpause = function(){
@@ -122,15 +178,42 @@ function startRecording(stream) {
 }
 
 function redirectToCharts() {
-
+	console.log(chunks);
+	// data: JSON.stringify({'videoURL' : globalVideoURL}),
+	// var blob = new Blob(globalVideoURL, {type: "video/webm"});
+	// var fd = new FormData();
+	// fd.append('fname','abcd');
+	// fd.append('data',JSON.stringify(blob));
+	// 	$.ajax({
+	// 		type: "POST",
+	// 		url: "/getCharts2",
+	// 		contentType: false,
+	// 		processData: false,
+	// 		data: fd,
+	// 		success: function (data) {
+	// 			console.log("redirecting to charts")
+	// 		}
+	// 	});
 		$.ajax({
-			type: "GET",
+			type: "POST",
 			url: "/getCharts",
-			data: {'videoURL' : globalVideoURL},
+			contentType: 'application/octet-stream',
+			data: globalVideoURL,
+			processData: false,
 			success: function (data) {
 				console.log("redirecting to charts")
 			}
-		})
+		});
+
+		// $.ajax({
+		// 	type: "GET",
+		// 	url: "/getCharts",
+		// 	data: {'videoURL': globalVideoURL},
+		// 	success: function (data) {
+		// 		console.log("redirecting to charts")
+		// 	}
+		// });
+
 
 }
 
