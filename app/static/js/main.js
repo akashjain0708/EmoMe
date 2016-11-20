@@ -154,7 +154,7 @@ function startRecording(stream) {
 		downloadLink.href = videoURL;
 		videoElement.src = videoURL;
 		console.log(videoURL);
-		downloadLink.innerHTML = 'Download video file';
+		//downloadLink.innerHTML = 'Download video file';
 
 		var name  = "interview_vid.webm" ;
 		console.log(name);
