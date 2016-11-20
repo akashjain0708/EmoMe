@@ -2,8 +2,13 @@
  * Created by Akash on 11/19/2016.
  */
 
-var createChart = function (xLabels, yPoints, chartID, borderColor, pointColor, hoverBackColor, hoverBorderColor, label, xLabelString, yLabelString) {
+var createChart = function (xLabels, yPoints, yPoints_2, chartID, borderColor, pointColor, hoverBackColor, hoverBorderColor, label, xLabelString, yLabelString) {
+
+    console.log(xLabels);
+    console.log(yPoints);
+
     var ctx = document.getElementById(chartID);
+    console.log(ctx);
     var lineChart = new Chart(ctx, {
         type: 'line',
         data: {
@@ -20,7 +25,20 @@ var createChart = function (xLabels, yPoints, chartID, borderColor, pointColor, 
                 pointHoverBorderWidth: 2,
                 pointRadius: 1,
                 pointHitRadius: 10,
-                label: label
+                label: "Smile"
+            }, {
+                data: yPoints_2,
+                fill: false,
+                borderColor: borderColor,
+                pointBackgroundColor: pointColor,
+                pointBorderWidth: 1,
+                pointHoverRadius: 5,
+                pointHoverBackgroundColor: hoverBackColor,
+                pointHoverBorderColor: hoverBorderColor,
+                pointHoverBorderWidth: 2,
+                pointRadius: 1,
+                pointHitRadius: 10,
+                label: "Sad"
             }]
         },
         options: {
@@ -63,8 +81,58 @@ var getXYPoints = function(label, dataSet) {
 [x1, y1] = getXYPoints('Smile', dataSetJson);
 [x2, y2] = getXYPoints('sad', dataSetJson);
 
-createChart(x1, y1, smileChart,"rgba(75,192,192,1)" ,"#fff", "rgba(75,192,192,1)", "rgba(220,220,220,1)" , 'Smile', 'Time', 'Happiness');
-createChart(x2, y2, sadChart,"rgba(75,192,192,1)", "#fff", "rgba(75,192,192,1)" , "rgba(220,220,220,1)" , 'Sad, Time', 'Sadness');
+// createChart(x2, y2, "sadChart","rgba(75,192,192,1)" ,"#fff", "rgba(75,192,192,1)", "rgba(220,220,220,1)" , 'Smile', 'Time', 'Happiness');
+
+
+
+// var barChartData = {
+//     labels : getXYPoints('Smile', dataSetJson)[0],
+//     datasets : [
+//         {
+//             fillColor : "rgba(220,220,220,0.5)",
+//             strokeColor : "rgba(220,220,220,0.8)",
+//             highlightFill: "rgba(220,220,220,0.75)",
+//             highlightStroke: "rgba(220,220,220,1)",
+//             data : getXYPoints('Smile', dataSetJson)[1]
+//         }
+//     ]
+
+// };
+
+// var barChartData2 = {
+//     labels : getXYPoints('sad', dataSetJson)[0],
+//     datasets : [
+//         {
+//             fillColor : "rgba(220,220,220,0.5)",
+//             strokeColor : "rgba(220,220,220,0.8)",
+//             highlightFill: "rgba(220,220,220,0.75)",
+//             highlightStroke: "rgba(220,220,220,1)",
+//             data : getXYPoints('sad', dataSetJson)[1]
+//         }
+//     ]
+
+// };
+
+
+
+// window.onload = function(){
+//     // s1 = getXYPoints('Smile', dataSetJson);
+//     // s2 = getXYPoints('sad', dataSetJson);
+
+//     var ctx = document.getElementById("smileChart").getContext("2d");
+//     window.myBar = new Chart(ctx).Line(barChartData, {
+//         responsive : true
+//     });
+//     var ctx2 = document.getElementById("sadChart").getContext("2d");
+//     window.myBar = new Chart(ctx2).Line(barChartData2, {
+//         responsive : true
+//     });
+// }
+
+
+
+createChart(x1, y1, y2, "smileChart","rgba(75,192,192,1)" ,"#fff", "rgba(75,192,192,1)", "rgba(220,220,220,1)" , 'Smile', 'Time', 'Happiness');
+// createChart(x2, y2, "sadChart","rgba(75,192,192,1)", "#fff", "rgba(75,192,192,1)" , "rgba(220,220,220,1)" , 'Sad', 'Time', 'Sadness');
 
 //var jsonData = {0: {'Smile': 0.50381887}, 1: {'Smile': 0.5244584}, 2: {'Smile': 0.37471813}, 3: {'Smile': 0.3662309}, 4: {'Smile': 0.38467777}, 5: {'Smile': 0.35506552}, 6: {'Smile': 0.35424682}, 7: {'Smile': 0.3941398}, 8: {'Smile': 0.41692236}, 9: {'Smile': 0.38992262}, 10: {'Smile': 0.33604342}, 11: {'Smile': 0.44526315}, 12: {'Smile': 0.38967356}, 13: {'Smile': 0.46438512}, 14: {'Smile': 0.33246452}, 15: {'Smile': 0.34840274}, 16: {'Smile': 0.34378657}, 17: {'Smile': 0.33653626}, 18: {'Smile': 0.48442918}, 19: {'Smile': 0.53641176}, 20: {'Smile': 0.531845}, 21: {'Smile': 0.44345507}, 22: {'Smile': 0.33793026}, 23: {'Smile': 0.33024272}, 24: {'Smile': 0.35893732}, 25: {'Smile': 0.35307083}, 26: {'Smile': 0.35426182}, 27: {'Smile': 0.36865106}, 28: {'Smile': 0.3226741}}
 //convertDataToChart('Smile', jsonData);

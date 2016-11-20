@@ -36,4 +36,3 @@ def get_charts():
 
 
 
-
