@@ -111,8 +111,8 @@ def get_charts():
 	return render_template('chart.html', dataset = data_set, percentages = listOfPercentages, highestPerSecond = highestPerSecond)
 
 @app.route('/charts', methods=['GET'])
-def charts():
-	return render_template
+def commonChart():
+	return render_template('commonChart.html')
 
 
 

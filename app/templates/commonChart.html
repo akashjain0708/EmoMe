@@ -1,0 +1,39 @@
+<!DOCTYPE html><html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Common Chart </title>
+    <!-- import plugin script -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+    <link href="{{url_for('static', filename='css/style.css')}}">
+</head>
+
+<body>
+    {% include 'header.html' %}
+
+    <div val="{{dataset}}" id="dataSetDiv"></div>
+
+    <div class="row">
+        
+        <br/><br/>
+        <div id="test1" class="col s12">
+          <div class="row">
+            <div class="col s12 m6" style="margin-left: 25%">
+
+                  <h3 class="center" style="color:cadetblue">Last Five Video Intensity</h3>
+                  <canvas id="radarChart" width="600" height="400"></canvas>
+
+              
+            </div>
+          </div>
+        </div>
+    </div>
+
+
+
+    {% include 'footer.html' %}
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+    <script src="{{url_for('static', filename='js/commonChart.js')}}" type="application/javascript"></script>
+</body>
+</html>
